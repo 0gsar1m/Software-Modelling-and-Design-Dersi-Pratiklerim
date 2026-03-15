@@ -1,0 +1,18 @@
+class EmailService {
+    public void sendEmail(String message) {
+        System.out.println("Email sent: " + message);
+    }
+}
+
+class OrderService {
+    private EmailService notificationService;
+
+    public OrderService() {
+        notificationService = new EmailService(); // Tight coupling here!
+    }
+
+    public void placeOrder() {
+        System.out.println("Order placed");
+        notificationService.sendEmail("Order confirmation");
+    }
+}

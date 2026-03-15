@@ -1,4 +1,4 @@
-package QUIZ_2.question_1;
+package QUIZ_2.question_1_ans;
 
 //ADAPTER:
 public class JobAssignAdapter implements IEmployee {

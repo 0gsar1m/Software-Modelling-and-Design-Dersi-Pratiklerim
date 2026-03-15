@@ -1,4 +1,4 @@
-package QUIZ_2.question_1;
+package QUIZ_2.question_1_ans;
 
 public class Main {
     public static void main(String[] args) {

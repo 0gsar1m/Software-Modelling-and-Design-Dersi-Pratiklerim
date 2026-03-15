@@ -1,4 +1,4 @@
-package QUIZ_2.question_2.question2_after;
+package QUIZ_2.question_2_ans.question2_after;
 
 public class OrderService {
     private INotificationService serviceToNotify;

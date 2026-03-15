@@ -1,0 +1,50 @@
+# Structural Design Patterns Challenges
+
+This repository contains my solutions and refactoring approaches to practical "Case-Based" Structural Design Patterns problems, focusing specifically on **Composite**, **Adapter**, and **Loose Coupling** principles.
+
+Below are the raw challenges I tackled and resolved in this project.
+
+## Challenge 1: Combining Composite and Adapter Patterns
+**Objective:** Complete the missing parts of the code below. The system uses the **Composite pattern** to represent an employee hierarchy and the **Adapter pattern** to assign jobs to employees using an external system. Adapt the external system to the internal system.
+
+### The Raw Challenge Code:
+
+```java
+// Internal system
+interface Employee {
+    void ______________();
+}
+
+class Developer implements Employee {
+    public void ______________() {
+        System.out.println("Developer employee");
+    }
+}
+
+class Manager implements Employee {
+    private List<______________> employees = new ArrayList<>();
+    
+    public void add(______________ e) {
+        employees.add(e);
+    }
+}
+
+/* External system */
+class AssignJob {
+    public void assignTask() {
+        System.out.println("Job assigned");
+    }
+}
+
+// Adapter
+class JobAdapter implements ______________ {
+    private ______________ jobSystem;
+
+    public JobAdapter(______________ ______________) {
+        jobSystem = ______________();
+    }
+
+    public void ______________() {
+        jobSystem.____________();
+    }
+}
