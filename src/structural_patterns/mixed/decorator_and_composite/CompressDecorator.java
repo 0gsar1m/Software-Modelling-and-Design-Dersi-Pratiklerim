@@ -1,4 +1,4 @@
-package structural_patterns.decorator_and_composite;
+package structural_patterns.mixed.decorator_and_composite;
 
 public class CompressDecorator extends FileDecorator{
     public CompressDecorator(IFileComponent fileComponent) {

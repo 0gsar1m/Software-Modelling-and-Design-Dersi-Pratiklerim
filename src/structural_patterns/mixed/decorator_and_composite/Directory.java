@@ -1,6 +1,4 @@
-package structural_patterns.decorator_and_composite;
-
-import structural_patterns.composite.IFile;
+package structural_patterns.mixed.decorator_and_composite;
 
 import java.util.ArrayList;
 import java.util.List;
