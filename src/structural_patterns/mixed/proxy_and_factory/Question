@@ -1,0 +1,25 @@
+Scenario
+You are building a high-performance Video Streaming Platform. High-resolution video files (e.g., 4K, 5GB+) are extremely "expensive" to load into memory (RAM). If the system loads every video immediately upon startup, the application will crash or suffer from massive initial latency.
+
+Your goal is to implement a system where video objects are created instantly as "placeholders," and the actual heavy resource loading only happens when the user clicks the Play button for the first time.
+
+Requirements
+Lazy Initialization (Proxy Pattern):
+
+Create a VideoProxy that acts as a stand-in for the RealVideo.
+
+The RealVideo object should not be instantiated until the play() method is called.
+
+The Proxy must cache the RealVideo instance after the first load to prevent redundant disk operations on subsequent calls.
+
+Abstraction of Creation (Factory Method Pattern):
+
+Implement a VideoFactory to manage the creation logic.
+
+The Client (Main) should not know whether it is receiving a Proxy or a Real object; it should only interact with the IVideo interface.
+
+The Factory should have a protected/internal method specifically for the Proxy to request the "Real" object when needed.
+
+Logging & Verification:
+
+The Proxy should log whether it is creating a new instance or reusing an existing one from memory.
