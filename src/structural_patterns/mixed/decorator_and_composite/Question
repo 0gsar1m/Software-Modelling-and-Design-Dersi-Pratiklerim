@@ -1,0 +1,28 @@
+Scenario
+You are developing a high-security file management system. The system needs to handle both individual files and directories (folders) that can contain multiple files or even other directories. Additionally, the system must support dynamic behaviors like encryption and compression that can be applied to any file or an entire directory at runtime.
+
+Requirements
+Hierarchical Structure (Composite Pattern): * Both single files (SingleDocument) and folders (Directory) must use the same interface (IFileComponent).
+
+A folder must be able to contain multiple files or subfolders and read everything inside sequentially when a read() command is issued.
+
+Dynamic Properties (Decorator Pattern):
+
+Properties such as encryption and compression should be able to be added to files or folders without changing their original classes.
+
+These properties should be able to be built upon each other (e.g., a file that is first encrypted, then compressed).
+
+Recursive Behavior (Important Detail):
+
+If a decorator is applied to a folder (e.g., CompressDecorator(Directory)), everything inside the folder should behave as if it were affected by a single operation.
+
+Expected Workflow (Main Logic):
+Create a file named salary.pdf.
+
+Wrap it with an Encryption Decorator.
+
+Place this encrypted file into a directory named Secret.
+
+Wrap the entire directory with a Compression Decorator.
+
+Call the read() method and observe the recursive execution.
