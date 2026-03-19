@@ -1,0 +1,20 @@
+Scenario
+A company relies on a Legacy HR System to manage employee tasks. However, the modern application requires a new, flexible interface called JobService. The goal is to integrate the old system into the new architecture while adding security and performance layers.
+
+Requirements
+Target Interface (JobService): Define a modern interface with an assign(String employee, String task) method.
+
+Adaptee (LegacyHR): This is the existing system that uses a different method signature: giveTask(String emp, String t).
+
+The Adapter Pattern: Create a LegacyHRAdapter that implements JobService and translates calls to the LegacyHR system.
+
+The Proxy Pattern: Implement a JobServiceProxy to wrap the Adapter. It must enforce:
+
+    Access Control: Only users with a specific "Access Degree" (e.g., "Manager" or "Leader") should be allowed to assign tasks.
+
+    Lazy Initialization: The expensive LegacyHRAdapter should only be created when the assign method is called for the first time.
+
+Expected Output
+If an unauthorized user tries to assign a task, the Proxy should block the request.
+
+If authorized, the Proxy should initialize the system (if not already done) and delegate the work to the Legacy System via the Adapter.
