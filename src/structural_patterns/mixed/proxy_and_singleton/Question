@@ -1,0 +1,18 @@
+Design Pattern Challenge: Secure Singleton Database Connection (Proxy & Singleton)
+Scenario
+In a large-scale application, creating a database connection is an "expensive" operation that consumes significant memory and CPU. To optimize this, the system must ensure two things:
+
+Resource Preservation (Singleton): Only one instance of a specific database connection (e.g., MySQL or PostgreSQL) should exist in the entire application to prevent server overload.
+
+Delayed Execution (Proxy): The connection object should not be instantiated during application startup. It should only be created at the exact moment a user tries to connect.
+
+Requirements
+Singleton Pattern: Implement MySqlConnection and PostgreSqlConnection using the Singleton pattern (Private constructor, static instance, and a getInstance() method).
+
+Proxy Pattern: Create a ProxyMysqlDbConnection that implements the IDBConnection interface.
+
+The Proxy should handle the Lazy Loading logic.
+
+It should fetch the actual connection from the Singleton class only when connect() is called for the first time.
+
+Verification: The Main class must prove that multiple calls to the Proxy return the exact same memory address, confirming that both patterns are working in harmony.

@@ -2,29 +2,29 @@ package structural_patterns.mixed.proxy_and_singleton;
 
 public class Main {
     public static void main(String[] args) {
-        // 1. ADIM: Proxy'yi oluşturuyoruz.
-        // Dikkat: Henüz MySqlConnection içindeki "getting instance" yazısı çıkmamalı!
-        System.out.println("--- 1. ADIM: Proxy Nesnesi Oluşturuldu ---");
+        // STEP 1: Create the Proxy object.
+        // Note: The "getting instance" message from MySqlConnection should NOT appear yet!
+        System.out.println("--- STEP 1: Proxy Object Created ---");
         IDBConnection proxy = new ProxyMysqlDbConnection();
-        System.out.println("Proxy şu an beklemede, henüz MySQL nesnesi yaratılmadı.");
+        System.out.println("Proxy is on standby. MySQL instance has not been created yet.");
 
-        System.out.println("\n--- 2. ADIM: İlk Bağlantı İsteği ---");
-        // Proxy burada 'mysql == null' olduğu için getInstance()'a gidecek.
+        System.out.println("\n--- STEP 2: First Connection Request ---");
+        // Proxy will check 'mysql == null' and call MySqlConnection.getInstance()
         IDBConnection conn1 = proxy.connect();
 
-        System.out.println("\n--- 3. ADIM: İkinci Bağlantı İsteği ---");
-        // Proxy burada 'mysql != null' olduğu için mevcut nesneyi kullanacak.
-        // "getting instance" yazısını görmememiz gerekiyor!
+        System.out.println("\n--- STEP 3: Second Connection Request ---");
+        // Proxy will find 'mysql != null' and reuse the existing instance.
+        // We should NOT see the "getting instance" message again!
         IDBConnection conn2 = proxy.connect();
 
-        System.out.println("\n--- 4. ADIM: Singleton Kanıtı (Referans Kontrolü) ---");
-        // Bellek adreslerini karşılaştırıyoruz.
+        System.out.println("\n--- STEP 4: Singleton Proof (Reference Comparison) ---");
+        // Compare memory addresses to ensure it's the same object.
         if (conn1 == conn2) {
-            System.out.println("KANIT: conn1 ve conn2 bellekte aynı adresi gösteriyor.");
-            System.out.println("Nesne Adresi: " + System.identityHashCode(conn1));
-            System.out.println("SONUÇ: Singleton ve Proxy uyum içinde çalışıyor!");
+            System.out.println("PROOF: conn1 and conn2 point to the SAME memory address.");
+            System.out.println("Object HashCode: " + System.identityHashCode(conn1));
+            System.out.println("RESULT: SUCCESS! Singleton and Proxy are working in perfect harmony.");
         } else {
-            System.out.println("HATA: Nesneler farklı! Singleton yapısı bozulmuş.");
+            System.out.println("ERROR: Different objects were created! Singleton pattern is broken.");
         }
     }
 }
