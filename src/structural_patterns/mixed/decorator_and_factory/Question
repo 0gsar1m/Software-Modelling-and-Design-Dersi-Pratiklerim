@@ -1,0 +1,9 @@
+Question:
+
+Design a Car Factory pattern.
+
+Create a Decorator Pattern that decorates this car factory to add
+Special Equipment and Luxury Interior for Sports Cars and Jeeps.
+
+The decorator must automatically set the corresponding properties of the
+related classes to true during the production process.
