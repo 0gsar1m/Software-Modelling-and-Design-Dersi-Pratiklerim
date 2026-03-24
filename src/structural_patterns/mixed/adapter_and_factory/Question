@@ -1,0 +1,5 @@
+Factory Method + Adapter
+You are designing a payment system. The system supports Credit Card Payment, but now PayPal Payment and Crypto Payment will also be added. These new payment methods have different interfaces. (Similar to the teacher's quiz question - Adapter for Different Payment Types!)
+
+Use an Adapter to fit the different payment methods into a common interface.
+Use a Factory Method to create the correct payment adapter.

@@ -1,0 +1,5 @@
+Builder + Prototype
+You are designing a game. Creating a character in the game is a
+complex process (name, class, weapon, armor, spell selection) → Builder Pattern.
+After the player creates a character,
+they should be able to quickly create variations by cloning that character → Prototype Pattern.
