@@ -1,0 +1,7 @@
+Composite + Facade
+You are designing a university management system. The university has Faculties,
+Departments, and Faculty Members. A Faculty contains multiple Departments, and a
+Department contains multiple Faculty Members → tree structure → Composite Pattern.
+You want to present this complex structure to the outside world with a
+simple interface: listing the entire university with a single method,
+getting the total number of faculty members → Facade Pattern
