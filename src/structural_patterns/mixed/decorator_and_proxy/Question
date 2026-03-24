@@ -1,0 +1,4 @@
+Decorator + Proxy (Midterm-style scenario question)
+You are designing a file management system. Loading files from disk is a costly process.
+The file should only be loaded when accessed → Proxy (lazy loading).
+Additional properties should be able to be added to files: encryption (EncryptionDecorator) and compression (CompressionDecorator) → Decorator.
