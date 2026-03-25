@@ -1,0 +1,5 @@
+The company grew and also purchased an external AI Support Package (ExternalAIService).
+But there's a problem: we can't modify the code of this system, and it doesn't fit our SupportHandler structure at all!
+
+Their method names are different, their parameters are different.
+This is where the Adapter Pattern comes in, allowing us to add this incompatible system as a link in our chain.
