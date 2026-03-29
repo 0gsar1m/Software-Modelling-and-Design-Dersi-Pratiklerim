@@ -1,0 +1,18 @@
+Scenario:
+Implement a multi-tier customer support system where support tickets are escalated based on their complexity. The system should automatically route a request through a chain of help desks until it finds a handler capable of resolving it.
+
+Requirements:
+
+Request Object: SupportRequest containing the issue's priority or type.
+
+Base Handler: SupportHandler (Abstract Class) that holds a reference to the next handler in the chain.
+
+Concrete Handlers:
+
+Chatbot: Handles basic, low-level queries.
+
+TechTeam: Handles intermediate technical issues.
+
+SeniorEngineer: Handles critical or complex architectural problems.
+
+Goal: Decouple the sender of a request from its receivers by giving more than one object a chance to handle the request.

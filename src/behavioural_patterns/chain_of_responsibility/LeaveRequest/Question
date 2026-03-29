@@ -1,0 +1,18 @@
+Scenario:
+Design a corporate leave approval workflow. In this hierarchy, an employee's time-off request must be approved by different levels of management depending on the number of days requested.
+
+Requirements:
+
+Request Object: LeaveRequest containing the number of days and the employee's name.
+
+Base Approver: LeaveApprover defining the contract for approval and setting the "successor."
+
+Concrete Approvers:
+
+TeamLead: Can approve leaves up to 2 days.
+
+Manager: Can approve leaves up to 10 days.
+
+CEO: Handles long-term leave requests or special cases.
+
+Goal: Create a chain of command where each manager either processes the request or passes it to their superior if the request exceeds their authority level.
