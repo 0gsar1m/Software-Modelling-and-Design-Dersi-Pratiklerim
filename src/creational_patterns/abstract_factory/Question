@@ -1,0 +1,23 @@
+Abstract Factory Case (Cross-Platform UI Toolkit)
+Scenario:
+Design a UI toolkit that supports multiple operating systems (Windows and MacOS). Each OS has its own specific style for UI components like Buttons and CheckBoxes. The application should be able to create families of related UI objects without specifying their concrete classes, ensuring that the components always match the current operating system's look and feel.
+
+Requirements:
+
+Abstract Products: IButton and ICheckBox interfaces that define the behavior for each UI component.
+
+Concrete Products:
+
+WindowsButton & WindowsCheckBox: UI elements following Windows design guidelines.
+
+MacOSButton & MacOSCheckBox: UI elements following Apple’s design guidelines.
+
+Abstract Factory: IGUIFactory interface that declares a set of methods for creating each abstract product.
+
+Concrete Factories:
+
+WindowsFactory: Produces Windows-styled components.
+
+MacOSFactory: Produces MacOS-styled components.
+
+Goal: Provide an interface for creating families of related or dependent objects without coupling the client code to concrete classes. This ensures the Open-Closed Principle as new platforms can be added without modifying existing client code.

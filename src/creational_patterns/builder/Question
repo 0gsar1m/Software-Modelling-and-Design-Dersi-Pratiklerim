@@ -1,0 +1,10 @@
+Scenario:
+Building a high-end Computer system involves many optional components (RAM size, CPU type, SSD capacity, Graphics Card, etc.). A constructor with too many parameters (telescoping constructor) is difficult to read and maintain.
+
+Requirements:
+
+Product: Computer class with multiple attributes.
+
+Builder Mechanism: An inner or dedicated builder class that allows step-by-step assembly.
+
+Goal: Separate the construction of a complex object from its representation so that the same construction process can create different representations. This provides better control over the construction process compared to traditional constructors.

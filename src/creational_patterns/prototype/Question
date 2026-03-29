@@ -1,0 +1,12 @@
+Scenario:
+You are developing a graphic design tool where users frequently reuse predefined colors. Creating a new color object from scratch every time is inefficient if a similar object already exists.
+
+Requirements:
+
+Prototype: An abstract Color class (or interface) that implements a cloning mechanism.
+
+Concrete Prototypes: BlackColor and BlueColor which provide their own cloning logic.
+
+Prototype Registry: ColorStore that caches predefined color objects and provides clones upon request.
+
+Goal: Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype. This is particularly useful when the cost of creating a new object is more expensive than cloning an existing one.

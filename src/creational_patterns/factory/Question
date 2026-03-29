@@ -1,0 +1,8 @@
+Scenario:
+A logistics application needs to handle different types of vehicles (Car, Truck, Motorcycle).
+
+The Violation: In the violation package, the Main class directly instantiates concrete classes using new. This creates tight coupling and violates the Open-Closed Principle (OCP); adding a new vehicle type requires modifying the client code.
+
+The Correction: In the correction package, a VehicleFactory is introduced along with an IVehicle interface. The client now requests a vehicle type from the factory without knowing the concrete implementation details.
+
+Goal: Define an interface for creating an object, but let subclasses or a factory class decide which class to instantiate. This decouples the client from concrete implementation classes.
