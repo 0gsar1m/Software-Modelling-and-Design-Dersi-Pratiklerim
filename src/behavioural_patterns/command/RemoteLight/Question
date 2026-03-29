@@ -1,0 +1,14 @@
+Scenario:
+Design a Smart Home System where various devices (like Lights) can be controlled via a remote. The remote should not be tightly coupled to specific device classes.
+
+Requirements:
+
+Receiver: A Light class with on() and off() methods.
+
+Command Interface: ICommand with an execute() method.
+
+Concrete Commands: TurnOnCommand and TurnOffCommand that encapsulate the light's actions.
+
+Invoker: RemoteController that stores and triggers the commands.
+
+Goal: Decouple the object that invokes the operation from the one that knows how to perform it.

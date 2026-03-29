@@ -1,0 +1,10 @@
+Scenario:
+Refactor the previous Restaurant system to simplify the execution logic. In this version, the focus is on utilizing Java's functional capabilities or direct interface implementation to reduce boilerplate code.
+
+Requirements:
+
+Simplified Execution: Explore how to trigger cook() operations directly through a streamlined Waiter class without necessarily needing separate Command classes for every single action.
+
+Polymorphism: Use the Meal interface as the primary contract for all cookable items.
+
+Goal: Compare the traditional Command Pattern with a more direct polymorphic approach to understand the trade-offs between decoupling (Command) and simplicity (Direct Interface).

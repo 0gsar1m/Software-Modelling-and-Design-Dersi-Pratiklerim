@@ -1,4 +1,4 @@
-package behavioural_patterns.command.MealAndWaiter;
+package behavioural_patterns.command.RunnableMealAndWaiter;
 
 public class Kebab implements Meal {
 

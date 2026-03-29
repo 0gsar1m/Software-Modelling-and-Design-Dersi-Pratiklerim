@@ -1,0 +1,14 @@
+Scenario:
+Simulate a restaurant ordering system where a Waiter takes orders and passes them to the Kitchen. The waiter doesn't need to know how to cook the meals; they only trigger the cooking process.
+
+Requirements:
+
+Receiver Interface: A Meal interface with a cook() method, implemented by Kebab and Soup.
+
+Command Interface: ICommand to represent a customer's order.
+
+Concrete Commands: KebabCookCommand and SoupCookCommand.
+
+Invoker: Waiter who receives the command and triggers the execution.
+
+Goal: Encapsulate a request as an object, thereby letting you parameterize clients with different requests (meals).

@@ -1,4 +1,4 @@
-package structural_patterns.bridge;
+package structural_patterns.bridge.remoteExample;
 
 public interface IDevice {
     void turnOn();

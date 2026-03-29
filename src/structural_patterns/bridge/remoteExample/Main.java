@@ -1,4 +1,4 @@
-package structural_patterns.bridge;
+package structural_patterns.bridge.remoteExample;
 
 public class Main {
     static void main() {
