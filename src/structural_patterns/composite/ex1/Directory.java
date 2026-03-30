@@ -1,6 +1,5 @@
-package structural_patterns.composite;
+package structural_patterns.composite.ex1;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

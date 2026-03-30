@@ -1,0 +1,14 @@
+Scenario:
+You are developing a cross-platform graphics library. The library needs to support various shapes (like Circles and Triangles) that can be drawn using different rendering technologies (Vector or Raster). To avoid a permanent binding between an abstraction (Shape) and its implementation (Renderer), you must decouple them.
+
+Task:
+
+Define an IRenderer interface with a method render(String shapeName).
+
+Implement concrete renderers: VectorRenderer and RasterRenderer.
+
+Create an abstract Shape class that holds a reference to an IRenderer object (the Bridge).
+
+Extend the Shape class to create Circle and Triangle.
+
+In the Main class, demonstrate how a Circle can be rendered using a VectorRenderer and then switched to a RasterRenderer at runtime.

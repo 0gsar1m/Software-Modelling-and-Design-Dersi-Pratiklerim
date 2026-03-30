@@ -1,0 +1,18 @@
+Scenario:
+You are designing a universal remote control system that should work with different types of devices, such as TVs and Radios. As the remote control evolves (adding "Advanced" features like Mute or Channel Switching), you don't want to change the code of every individual device.
+
+Task:
+
+Create an IDevice interface (Implementation) that defines core device operations like enable(), disable(), and setVolume().
+
+Implement concrete devices: Tv and Radio.
+
+Design a BaseRemoteControl abstract class (Abstraction) that maintains a bridge to an IDevice.
+
+Develop specialized remote controllers:
+
+StandardRemoteController: Basic On/Off functionality.
+
+AdvancedRemoteController: Adds extra features like a mute() function.
+
+In the Main class, demonstrate how an AdvancedRemoteController can control a Radio and how a StandardRemoteController can control a TV.

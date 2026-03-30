@@ -1,4 +1,4 @@
-package structural_patterns.bridge.renderExample;
+package structural_patterns.bridge.ex1;
 
 public class RasterRenderer implements IRenderer{
     private Shape shape;

@@ -1,4 +1,4 @@
-package structural_patterns.composite;
+package structural_patterns.composite.ex1;
 
 public class Main {
     static void main() {

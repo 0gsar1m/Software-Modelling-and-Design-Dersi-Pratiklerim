@@ -1,4 +1,4 @@
-package structural_patterns.composite;
+package structural_patterns.composite.ex1;
 
 public class File implements IFile{
     private String fileName;

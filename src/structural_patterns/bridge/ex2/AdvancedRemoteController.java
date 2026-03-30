@@ -1,4 +1,4 @@
-package structural_patterns.bridge.remoteExample;
+package structural_patterns.bridge.ex2;
 
 public class AdvancedRemoteController extends BaseRemoteControl{
     // if super wasnt existed, BaseRemoteControl(father) constructor wouldnt be active so
