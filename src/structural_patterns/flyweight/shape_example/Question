@@ -1,0 +1,27 @@
+# 🪶 Memory-Optimized Shape Rendering Engine (Flyweight Pattern)
+
+This project demonstrates the **Flyweight Design Pattern** (Structural). It showcases how to drastically minimize memory usage (RAM) and improve performance when a system needs to create and manage a massive number of similar objects.
+
+## 📝 Scenario and Problem Definition
+
+Imagine a graphical rendering engine or a video game that needs to draw 100,000 shapes (Circles and Squares) on the screen simultaneously.
+
+**The Problem (Out of Memory):** If the client code (`Main`) uses the `new` keyword to instantiate 100,000 separate `Circle` and `Square` objects, the application will quickly consume all available RAM, leading to severe performance bottlenecks or `OutOfMemoryError` crashes.
+
+### The Solution: State Splitting and Object Caching
+The Flyweight pattern solves this by dividing the object's state into two parts:
+1. **Intrinsic State (Shared):** The properties that make a shape what it is (e.g., the mathematical formula to draw a circle, or a shared color). This state is stored *inside* the Flyweight object.
+2. **Extrinsic State (Unique):** The properties that change per instance (e.g., the exact X and Y coordinates on the screen, or the radius). This state is *passed in* as parameters to the object's methods, not stored inside it.
+
+### 🏗️ The Architecture (`ShapeFactory`)
+The core of this pattern is the `ShapeFactory`. It acts as a caching pool.
+When the client requests a "Circle", the factory checks its internal cache (like a `HashMap`).
+- If a Circle object already exists, the factory returns the *existing* instance.
+- If it doesn't exist, the factory creates one, caches it, and then returns it.
+
+### 🎯 Expected Output (`Main` Class)
+In the client code, we simulate drawing 100,000 shapes at random coordinates. Thanks to the `ShapeFactory`, the system actually only creates **two objects in memory** (one `Circle` instance and one `Square` instance). The client simply reuses these two objects 100,000 times, passing different X and Y coordinates to their `draw(x, y)` methods dynamically.
+
+## 🚀 Architectural Benefits
+* **Massive Memory Reduction:** Reduces RAM consumption exponentially by sharing the heavy intrinsic state across millions of virtual instances.
+* **Performance Boost:** Decreases the workload on the Garbage Collector since fewer objects are created and destroyed.

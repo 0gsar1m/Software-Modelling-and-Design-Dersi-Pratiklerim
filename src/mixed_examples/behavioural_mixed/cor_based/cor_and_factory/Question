@@ -1,0 +1,26 @@
+# 📦 Automated Package Processing and Document Generation System (CoR & Factory Method)
+
+This project simulates an automated logistics and customs processing system, demonstrating the powerful integration of a behavioral pattern (Chain of Responsibility) with a creational pattern (Factory Method).
+
+## 📝 Scenario and Problem Definition
+
+A shipping company processes packages of various sizes and weights. Each package must be routed to the appropriate carrier. Once a carrier successfully accepts and processes a package, the system must automatically generate a specific shipping document (e.g., a standard waybill for small packages or a freight manifest for large ones).
+
+The system is built adhering to the following architectural rules:
+
+### 1. Sequential Package Processing (Chain of Responsibility Pattern)
+Packages (`IPackage` / `Package`) are passed into a pipeline of handlers (`Carrier`).
+- A `SmallPackageCarrier` evaluates the package. If it falls within its capacity, it processes it.
+- If the package is too large, the carrier seamlessly delegates it to the next handler in the chain (e.g., a `BigPackageCarrier`).
+This decouples the client from knowing exactly which carrier will handle the package.
+
+### 2. Automated Document Generation (Factory Method Pattern)
+To prevent the client or the main workflow from being tightly coupled to document creation logic, the Factory Method pattern is integrated directly into the CoR handlers.
+The base `Carrier` class defines an abstract `createDocument()` method. Once a concrete carrier processes a package, it invokes this factory method to instantiate and return the correct document type (`IDocument` -> `SmallDoc` or `BigDoc`).
+
+### 🎯 Expected Output
+On the client side, a `Package` is instantiated and handed to the first `Carrier` in the chain. The system evaluates the package, finds the appropriate carrier, processes the shipment, and automatically returns the correct polymorphic `IDocument` (e.g., printing a `SmallDoc` for a lightweight package) without a single `if-else` type-checking block in the main execution flow.
+
+## 🏗️ Architectural Benefits
+* **Open/Closed Principle (OCP):** Introducing a new package category (e.g., `InternationalPackage`) and its corresponding carrier/document pair requires zero changes to the existing code. You simply create the new classes and link them to the chain.
+* **Delegation of Creation:** The Factory Method distributes the responsibility of object instantiation (documents) to the specific handlers that actually need them, keeping the main business logic exceptionally clean.

@@ -1,0 +1,31 @@
+# 🌳 Hierarchical Structures: The Composite Pattern
+
+This project demonstrates the **Composite Design Pattern** (Structural) through two distinct real-world scenarios: A File System (`ex1`) and a Logistics Shipping System (`ex2`).
+
+Both examples address the exact same architectural challenge: **Managing Part-Whole Hierarchies.**
+
+## 📝 The Core Problem: Trees and Nested Structures
+
+In many systems, objects are structured in a tree-like hierarchy where a "Container" can hold "Individual Items" OR "Other Containers".
+- **In Example 1 (File System):** A `Directory` can contain individual `File` objects, but it can also contain sub-`Directory` objects.
+- **In Example 2 (Logistics):** A `Container` can hold a `SinglePackage`, but it can also hold smaller nested `Container` boxes.
+
+**The Nightmare:** If the client code (`Main`) has to constantly check `if (item instanceof Directory)` to open it and loop through its contents, or `if (item instanceof Container)` to calculate its total weight, the code becomes an unmaintainable, recursive mess of `if-else` blocks.
+
+## 💡 The Universal Solution: Uniformity (The Composite)
+
+The Composite pattern solves this by introducing a common interface (The Component) for both the branches (Containers) and the leaves (Individual Items).
+
+### The Architecture in Both Examples:
+1. **The Component (`IFile` / `IShippable`):** The shared interface. It declares standard operations like `getSize()`, `calculateWeight()`, or `printName()`.
+2. **The Leaf (`File` / `SinglePackage`):** The basic, indivisible elements. When asked for their size/weight, they simply return their own specific value.
+3. **The Composite (`Directory` / `Container`):** The complex elements that hold children. When asked for their size/weight, they don't do the math themselves. Instead, they iterate through their children (which could be leaves or other composites) and sum up the results by calling the *exact same method* on them.
+
+### 🎯 Expected Output & Client Behavior
+In the `Main` class of both examples, the client treats everything uniformly.
+If the client calls `calculateWeight()` on a massive `Container` that holds 5 boxes and 2 smaller containers (which hold their own boxes), the Composite pattern handles the entire recursive calculation automatically behind the scenes. The client does not need to know whether it is dealing with a single leaf or a massive, deeply nested branch.
+
+## 🏗️ Architectural Benefits
+* **Uniformity:** The client treats individual objects and compositions of objects exactly the same way.
+* **Open/Closed Principle (OCP):** You can introduce new types of leaves or containers into the system without changing the existing client code or the component interface.
+* **Simplified Client Code:** Eradicates the need for complex type-checking (`instanceof`) when traversing tree structures.

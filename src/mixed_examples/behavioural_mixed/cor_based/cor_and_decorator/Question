@@ -1,0 +1,24 @@
+# 📦 Logistics Cargo Processing and Routing System (CoR & Decorator)
+
+This project is a "Cargo Management System" simulation designed to demonstrate how Structural and Behavioral design patterns can seamlessly integrate and work together.
+
+## 📝 Scenario and Problem Definition
+
+A logistics company prepares packages received from customers based on their characteristics and routes them to appropriate carrier vehicles according to their weight. The system must be designed adhering to the following requirements:
+
+### 1. Dynamic Package Features (Decorator Pattern)
+Base packages (`BasicPackage`) in the system must be able to acquire new features dynamically at runtime. For example, a "Fragile" (`FragileDecorator`) tag should be attachable to a package on the fly. This process must be achieved without modifying the base classes (Open/Closed Principle) and without creating a complex, rigid inheritance tree.
+
+### 2. Carrier Routing (Chain of Responsibility Pattern)
+Once prepared and decorated, the packages must be handed over to a carrier chain (`Carrier`) without the sender needing to know exactly which vehicle will transport it:
+- **SmallCarrier:** Can only handle packages weighing less than 10 kg.
+- **BigCarrier:** Can handle heavy packages weighing 10 kg and above.
+
+If a specific link in the chain cannot handle the package, it must automatically delegate the request to the next link in the chain.
+
+### 🎯 Expected Output (`Main` Class)
+On the client side (`Main` class), a package weighing 5.5 kg should be instantiated. Then, the "Fragile" attribute must be added using the Decorator pattern. Finally, the decorated package should be passed to the first link of the carrier chain, demonstrating the successful execution of the workflow.
+
+## 🏗️ Architectural Benefits
+* **Separation of Concerns:** The carrier classes (`Carrier`) do not care about the internal contents of the package or whether it is fragile; their sole responsibility is checking the weight. Conversely, the decorator classes (`Decorator`) focus entirely on adding package properties.
+* **Loose Coupling:** These two distinct design patterns establish a highly flexible architecture by interacting with each other exclusively through the `IPackage` interface.

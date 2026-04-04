@@ -1,0 +1,28 @@
+# 🛡️ Secure Customer Support Ticketing System (CoR & Proxy)
+
+This project demonstrates a robust enterprise-level architecture by combining a structural pattern (Proxy) with a behavioral pattern (Chain of Responsibility) to handle customer support requests securely and efficiently.
+
+## 📝 Scenario and Problem Definition
+
+A tech company receives thousands of customer support requests (`SupportRequest`) daily. These requests vary in complexity, ranging from simple password resets (`Level.BASIC`) to critical server failures (`Level.CRITICAL`).
+
+To manage this, the system needs an automated escalation path. However, exposing the support team directly to incoming traffic is dangerous due to potential spam, unauthorized access, or malformed requests.
+
+The system is designed with the following architectural rules:
+
+### 1. The Gatekeeper (Proxy Pattern)
+Before any request enters the actual support workflow, it must pass through the `SupportProxy`.
+The Proxy acts as a protective shield (Virtual/Protection Proxy). It intercepts the incoming `SupportRequest`, validates it (e.g., checks for authentication, spam filtering, or valid formatting), and only forwards legitimate requests to the support chain. If a request is invalid, the Proxy rejects it immediately, saving valuable processing time and resources.
+
+### 2. The Escalation Path (Chain of Responsibility Pattern)
+Once the `SupportProxy` approves the request, it hands it over to the first link in the support chain (`SupportHandler`). The chain is structured hierarchically:
+- **`Chatbot`:** Handles `Level.BASIC` tier requests instantly.
+- **`TechTeam`:** If the Chatbot cannot resolve it, the request is escalated to human operators for intermediate issues.
+- **`SeniorEngineer`:** The final fallback for complex or critical system failures.
+
+### 🎯 Expected Output
+In the `Main` class, the client interacts *only* with the `SupportProxy`. A valid `SupportRequest` is submitted to the proxy. The proxy authenticates it and forwards it to the `Chatbot`. Depending on the request's `Level`, the terminal will output the request escalating through the chain until the appropriate handler (`Chatbot`, `TechTeam`, or `SeniorEngineer`) successfully resolves it. An invalid request will be blocked outright by the Proxy.
+
+## 🏗️ Architectural Benefits
+* **Security & Resource Management:** The Proxy ensures that expensive human resources (`TechTeam`, `SeniorEngineer`) are never bothered by spam or unauthorized requests.
+* **Separation of Concerns:** The security/validation logic is completely isolated in the `SupportProxy`, keeping the business logic inside the `SupportHandler` classes clean and focused solely on solving customer issues.

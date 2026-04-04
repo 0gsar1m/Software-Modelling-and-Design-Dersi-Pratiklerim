@@ -1,0 +1,24 @@
+# 🏠 Smart Home Automation Control (Facade Pattern)
+
+This project demonstrates the **Facade Design Pattern** (Structural). It illustrates how to provide a simplified, unified interface to a complex body of code, such as a subsystem of interacting classes, making the overall system much easier for clients to use.
+
+## 📝 Scenario and Problem Definition
+
+Imagine a Smart Home system composed of several complex and independent subsystems:
+- `LightSystem`: Controls turning lights on/off or dimming them.
+- `DoorSystem`: Manages locking and unlocking various doors.
+- `AlarmSystem`: Handles arming and disarming the security sensors.
+
+**The Problem (Client Complexity):** If a user wants to execute a "Leave Home" routine, the client code (`Main`) would have to individually instantiate and interact with all these subsystems. The client would need to know the internal workings of the lights, doors, and alarms, leading to **tight coupling** and bloated client code.
+
+### The Solution: The Facade
+The Facade pattern solves this by introducing a single wrapper class: the `SmartHouseFacade`.
+This class sits between the client and the complex subsystems. It holds references to the `LightSystem`, `DoorSystem`, and `AlarmSystem`. It then provides simple, high-level methods (like `leaveHome()` or `arriveHome()`) that internally orchestrate the necessary steps across all subsystems.
+
+### 🎯 Expected Output (`Main` Class)
+In the client code (`Main`), the user no longer interacts with the individual systems.
+Instead, the client simply instantiates the `SmartHouseFacade` and calls a single method:
+```java
+SmartHouseFacade myHome = new SmartHouseFacade();
+myHome.leaveHome();
+// Behind the scenes: Lights turn off, Doors lock, Alarm arms.

@@ -1,0 +1,31 @@
+# 🌉 Logistics Cargo & Delivery Routing System (Bridge Pattern)
+
+This project demonstrates the **Bridge Design Pattern** (Structural). It showcases how to decouple an abstraction (Cargo) from its implementation (Delivery Method) so that the two can vary independently, preventing a massive and unmanageable inheritance tree.
+
+## 📝 Scenario and Problem Definition
+
+A global logistics company handles different types of cargo (e.g., Standard, Fragile). They also utilize various transportation methods (e.g., Truck, Plane).
+
+**The Problem (Class Explosion):** If we relied solely on traditional inheritance to model this system, we would need a separate class for every possible combination:
+- `StandardCargoByTruck`
+- `StandardCargoByPlane`
+- `FragileCargoByTruck`
+- `FragileCargoByPlane`
+
+If we later add a new cargo type (e.g., `HazardousCargo`) or a new delivery method (e.g., `ShipDelivery`), the number of classes multiplies exponentially. This creates a rigid, tightly coupled, and hard-to-maintain codebase.
+
+### The Solution: The Bridge
+The Bridge pattern solves this by separating the system into two distinct hierarchies:
+1. **Abstraction (`Cargo`):** The core business logic layer. It defines what is being shipped (`StandartCargo`, `FragileCargo`). Most importantly, it holds a reference to the implementor interface.
+2. **Implementation (`IDelivery`):** The platform or platform-specific layer. It defines *how* the cargo is shipped (`TruckDelivery`, `PlaneDelivery`).
+
+By using **composition over inheritance**, the `Cargo` class acts as a "bridge" to the `IDelivery` interface.
+
+### 🎯 Expected Output (`Main` Class)
+In the client code (`Main`), we can dynamically assign any delivery method to any cargo type at runtime.
+For example, we instantiate a `FragileCargo` object and inject a `PlaneDelivery` object into it. When we call the `process()` or `ship()` method on the cargo, it delegates the actual transportation logic to the injected delivery object. We can easily switch the same fragile cargo to be delivered by truck without changing the cargo class itself.
+
+## 🏗️ Architectural Benefits
+* **Prevents Class Explosion:** Replaces an exponentially growing inheritance tree with two simple, independent class hierarchies.
+* **Open/Closed Principle (OCP):** You can introduce new delivery methods (like drones or ships) or new cargo types independently without touching the existing code.
+* **Runtime Binding:** The implementation (delivery method) can be selected or even switched dynamically while the program is running.

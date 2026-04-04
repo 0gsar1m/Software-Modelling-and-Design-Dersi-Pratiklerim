@@ -1,0 +1,41 @@
+Fix code:
+
+(29) Briefly describe the violations of SOLID principles and problems in the following command pattern
+implementation. Change necessary parts to convert this version to a fully correct implementation?
+Correct Version
+interface Command {
+ void execute();
+}
+class Car {
+ public void startEngine() {
+ System.out.println("Car engine started.");
+ }
+ public void stopEngine() {
+ System.out.println("Car engine stopped.");
+ }
+}
+class CarCommand implements Command {
+ private Car car;
+ private boolean start;
+ public CarCommand(Car car, boolean start) {
+ this.car = car;
+ this.start = start;
+ }
+ public void execute() {
+ if (start) {
+ car.startEngine();
+ } else {
+ car.stopEngine();
+ }
+ }
+}
+// Client
+public class Main {
+ public static void main(String[] args) {
+ Car car = new Car();
+ Command startCommand = new CarCommand(car, true);
+ Command stopCommand = new CarCommand(car, false);
+ startCommand.execute(); // Car engine started.
+ stopCommand.execute(); // Car engine stopped.
+ }
+}

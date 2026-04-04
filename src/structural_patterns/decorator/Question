@@ -1,0 +1,31 @@
+# 🏎️ Dynamic Car Customization System (Decorator Pattern)
+
+This project demonstrates the **Decorator Design Pattern** (Structural). It illustrates how to attach additional responsibilities or features to an object dynamically at runtime, providing a flexible alternative to subclassing for extending functionality.
+
+## 📝 Scenario and Problem Definition
+
+Imagine a car dealership software where customers can purchase a base car model and customize it by adding various optional features, such as a Turbo Engine, Steel Rims, Leather Seats, or a Sunroof.
+
+**The Problem (The Subclassing Nightmare):** If we used standard inheritance to handle these combinations, we would suffer from "Class Explosion." We would need to create classes like:
+- `CarWithTurbo`
+- `CarWithSteelRims`
+- `CarWithTurboAndSteelRims`
+- `CarWithTurboAndSunroof`...
+
+Every new optional feature would exponentially increase the number of subclasses, making the codebase rigid, repetitive, and impossible to maintain.
+
+### The Solution: The Decorator Wrapper
+The Decorator pattern solves this by using **composition over inheritance**.
+1. **Component Interface (`ICar`):** The standard interface that both the cars and the decorators will implement.
+2. **Concrete Component (`BasicCar`):** The core object that we want to add features to.
+3. **Base Decorator (`CarDecorator`):** A class that implements `ICar` but also holds a reference to an `ICar` object inside it.
+4. **Concrete Decorators (`TurboEngineDecorator`, `SteelRimDecorator`):** These classes extend the base decorator. They execute the base car's behavior and then strictly add their own specific feature (e.g., adding horsepower, changing the rim type, or increasing the total cost).
+
+### 🎯 Expected Output (`Main` Class)
+In the client code (`Main`), the customization happens dynamically at runtime.
+We instantiate a `BasicCar`. If the customer wants steel rims, we wrap the car inside a `SteelRimDecorator`. If they also want a turbo, we wrap that result inside a `TurboEngineDecorator`.
+```java
+// Example Runtime Customization:
+ICar myCar = new BasicCar();
+myCar = new SteelRimDecorator(myCar);
+myCar = new TurboEngineDecorator(myCar);

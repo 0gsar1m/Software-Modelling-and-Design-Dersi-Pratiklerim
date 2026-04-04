@@ -1,0 +1,22 @@
+# 🔌 Universal Remote Integration System (Adapter Pattern)
+
+This project demonstrates the **Adapter Design Pattern** (Structural). It showcases how to integrate legacy systems, third-party libraries, or completely incompatible interfaces into a modern, unified client architecture without altering their original source code.
+
+## 📝 Scenario and Problem Definition
+
+Imagine a modern Smart Home system that relies on a standard interface (`IRemoteControl`) to operate all household devices.
+- The system easily integrates with a modern device (`NewRemoteController`) because it naturally implements the expected interface.
+- **The Problem:** We also need to control older legacy devices (`OldRemoteController`) and bizarre, third-party archaic devices (`DinosaurRemoteController`). These classes have completely different method signatures and internal logic. Modifying their source code is either impossible (third-party) or highly risky (legacy systems).
+
+### The Solution: The Wrapper (Adapter)
+To solve this, the system implements the Adapter Pattern:
+1. **Target Interface (`IRemoteControl`):** The standard interface the client (`Main`) expects to use (e.g., `buttonPressed()`).
+2. **Adaptees (`OldRemoteController`, `DinosaurRemoteController`):** The incompatible classes with different methods (e.g., `clickOldButton()`, `stompDinosaurFoot()`).
+3. **Adapters (`OldRemoteAdapter`, `DinosaurRemoteAdapter`):** The bridge classes. They implement the `IRemoteControl` interface, but internally, they hold a reference to the specific Adaptee and translate the modern request into the legacy method call.
+
+### 🎯 Expected Output (`Main` Class)
+In the client code, an array or list of `IRemoteControl` objects is created. The client adds the `NewRemoteController`, `OldRemoteAdapter`, and `DinosaurRemoteAdapter` to this list. The client then seamlessly loops through them, issuing the standard command. Behind the scenes, the adapters intercept these standard calls and translate them perfectly for the legacy systems, proving that incompatible systems can work together in harmony.
+
+## 🏗️ Architectural Benefits
+* **Open/Closed Principle (OCP):** You can introduce new types of bizarre or legacy controllers into the system simply by creating a new adapter class, without ever touching the existing client code or the legacy code itself.
+* **Single Responsibility Principle (SRP):** The complex data conversion or translation logic is isolated entirely within the Adapter classes, keeping the core business logic clean.

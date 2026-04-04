@@ -1,0 +1,10 @@
+Question (Cargo Handling and Decoration System)
+
+Scenario: You are writing a cargo handling system for a logistics company.
+In the system, cargoes (BasicPackage) are defined according to their weight and contents.
+Customers can add additional labels/attributes to their cargoes dynamically at runtime, such as "Fragile" (FragileDecorator).
+These prepared cargoes are then given to a chain of responsibility.
+ In the chain, SmallCarrier carries cargoes under 10 kg, while BigCarrier carries cargoes of 10 kg and above.
+
+Design this system using Decorator and Chain of Responsibility patterns. Create the class structure and show how a
+ 5 kg "Fragile" package is processed by the chain within the Main class.
